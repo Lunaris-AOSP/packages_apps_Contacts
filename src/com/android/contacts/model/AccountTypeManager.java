@@ -49,6 +49,7 @@ import com.android.contacts.model.account.GoogleAccountType;
 import com.android.contacts.model.account.SimAccountType;
 import com.android.contacts.model.dataitem.DataKind;
 import com.android.contacts.preference.ContactsPreferences;
+import com.android.contacts.util.SimContactsUtil;
 import com.android.contacts.util.concurrent.ContactsExecutors;
 
 import com.google.common.base.Function;
@@ -582,7 +583,7 @@ class AccountTypeManagerImpl extends AccountTypeManager
                             public List<AccountWithDataSet> call() throws Exception {
                                 List<AccountWithDataSet> simAccountWithDataSets = new ArrayList<>();
                                 List<ContactsContract.SimAccount> simAccounts =
-                                        ContactsContract.SimContacts.getSimAccounts(
+                                        SimContactsUtil.getSimAccounts(
                                                 mContext.getContentResolver());
                                 for (ContactsContract.SimAccount simAccount : simAccounts) {
                                     simAccountWithDataSets.add(
